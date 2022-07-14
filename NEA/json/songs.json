@@ -1,0 +1,8 @@
+{
+    "all":{
+        "Hip_hop":[["Frontin","Neptunes","Feat. Jay Z"],["California Love","Tupac",""],["Accordion", "MF Doom",""],["Earfquake", "Tyler The Creator","Feat. Playboi Carti"]],
+        "Pop":[["Smoking Out The Window","Silk Sonic",""],["Stay", "Kid Laroi", ""],["Bohemian Rhapsody", "Queen", ""]],
+        "Jazz":[["Fly Me To The Moon", "Frank Sinatra"],["Misty", "Errol Garner",""],["Autumn Leaves", "Cannonball Adderley",""]],
+        "Classical":[["Moonlight Sonata", "Beethoven",""],["Fur Elise", "Beethoven", ""]]
+    }
+}

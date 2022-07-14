@@ -1,0 +1,66 @@
+<html lang="en">
+
+<head>
+  <link rel = "icon" type = "image/png" href = "Images/music-wave.png">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KXYZRFJK4C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-KXYZRFJK4C');
+  </script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Quiz Game</title>
+  <link rel='stylesheet' href='game_style.css'>
+  <script defer src='game_script.js'></script>
+  <script src="https://kit.fontawesome.com/63e6bfb589.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id='top_row'>
+    <div id='back_button' onclick="home();">
+      <i id='arrow' class="fa-solid fa-arrow-left-long"></i>
+      <h2 id='back'>Back</h2>
+    </div>
+    <p id = 'score'></p>
+    <div>
+      <i class="fa-solid fa-heart fa-3x"  id ='full_heart_1'></i>
+      <i class="fa-solid fa-heart fa-3x"  id ='full_heart_2'></i>
+      <i class="fa-solid fa-heart fa-3x"  id ='full_heart_3'></i>
+      <i class="fa-regular fa-heart fa-3x"  id ='empty_heart_1'></i>
+      <i class="fa-regular fa-heart fa-3x"  id ='empty_heart_2'></i>
+      <i class="fa-regular fa-heart fa-3x"  id ='empty_heart_3'></i>
+    </div>
+    <h2 id='genre_title'>HipHop/Rap</h2>
+    <div id = 'song_text'>
+      <h1 id='song' class = 'song_text'>Song</h1>
+      <h1 id='artist' class = 'song_text'>Artist</h1>
+      <h1 id='extra' class = 'song_text'>Extra</h1>
+    </div>
+    <div class="form" id="input_1">
+      <input type="text" id="email" class="form__input" autocomplete="off" placeholder=" ">
+      <label for="email" class="form__label">Song</label>
+    </div>
+    <div class="form" id="input_2">
+      <input type="text" id="email" class="form__input" autocomplete="off" placeholder=" ">
+      <label for="email" class="form__label">Artist</label>
+    </div>
+    <div id = 'submit'>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Submit
+    </div>
+    <div id="buttons">
+      <button class="button button1" onclick="setTheme('neon');">neon</button>
+      <button class="button button2" onclick="setTheme('cosmic_sand');">cosmic_sand</button>
+    </div>
+  </div>
+</body>
+
+</html>

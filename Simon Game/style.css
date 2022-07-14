@@ -1,0 +1,117 @@
+body{
+    background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0)),url('Background wallpaper/ice\ mountains.jpg');
+    background-position: top;
+    background-size: cover;
+    height: 100%;
+    text-align: center;
+}
+
+h1{
+  font-family:sans-serif;
+  color:rgb(132, 185, 247);
+}
+#middle_circle h1{
+  position:absolute;
+  left: 20px;
+  bottom:35px;
+}
+p{
+  font-family:sans-serif;
+}
+
+
+#outer_circle {
+  position: relative;
+  width: 400px;
+  height: 400px;
+  background-color:black;
+  border-radius: 50%;
+  border: 5px solid gray;
+  margin-left:auto;
+  margin-right: auto;
+} 
+
+#green_quarter {
+  background-color: green;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 165px;
+  height: 165px;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 0%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
+  transform:rotate(90deg);
+}
+
+#green_quarter:hover{
+  cursor:pointer;
+  background-color:rgb(94, 160, 94);
+}
+
+#red_quarter {
+  background-color: red;
+  position: absolute;
+  top: 20px;
+  left: 217px;
+  width: 165px;
+  height: 165px;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 0%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
+  transform:rotate(180deg);
+}
+#red_quarter:hover{
+  cursor:pointer;
+  background-color:rgb(255, 97, 97);
+}
+
+#yellow_quarter {
+  background-color: yellow;
+  position: absolute;
+  top: 210px;
+  left: 20px;
+  width: 165px;
+  height: 165px;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 0%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
+  transform:rotate(deg);
+}
+#yellow_quarter:hover{
+  cursor:pointer;
+  background-color: rgb(255, 255, 145);
+}
+
+#blue_quarter {
+  background-color: blue;
+  position: absolute;
+  top: 210px;
+  left: 217px;
+  width: 165px;
+  height: 165px;
+  border-bottom-left-radius: 100%;
+  border-bottom-right-radius: 0%;
+  border-top-left-radius: 0%;
+  border-top-right-radius: 0%;
+  transform:rotate(270deg);
+}
+#blue_quarter:hover{
+  cursor:pointer;
+  background-color: rgb(86, 86, 255);
+}
+  
+#middle_circle{
+  border-radius: 50%;
+  position: absolute;
+  top:125px;
+  left:125px;
+  width:150px;
+  height:150px;
+  background-color: #5E5E5E;
+}
+  
+  

@@ -1,0 +1,261 @@
+:root,
+:root.neon{
+  --background-colour: #060b23;
+  --primary: #ffffff;
+  --primary-dark: #a159ff;
+  --secondary-dark:#0e1952;
+  --secondary:#18ffff;
+  --secondary-light:#adffff;
+}
+:root.cosmic_sand {
+  --background-colour: #051622;
+  --primary-dark:#cb9255;
+  --primary: #DEB992;
+  --primary-light: #f8f0e7;
+  --secondary-dark:#0e5651;
+  --secondary: #1BA098;
+  --secondary-light: #6cbcb7;
+}
+:root.retro{
+  --background-colour: #051C2C;
+  --primary-dark:#7A93DC;
+  --primary: #ED9B33;
+  --primary-light: #7A93DC;
+  --secondary-dark:#3F2A56;
+  --secondary: #5461C8;
+  --secondary-light: #A350A3;
+}
+:root.salmon{
+  --background-colour: #034C52;
+}
+* {
+  user-select: none;
+}
+
+body {
+  background-color: var(--background-colour);
+  font-family: Arial;
+}
+#genre_title {
+  text-align: center;
+  color: var(--primary);
+  text-align: center;
+  font-size: 60px;
+  top: 30%;
+}
+#back {
+  position: absolute;
+  display: inline-block;
+  color: var(--primary);
+  padding-top: 5px;
+  font-size: 25px;
+  top: -0.5%;
+  left: 3%;
+}
+#arrow {
+  position: relative;
+  top: 22%;
+  left: 10%;
+  color: var(--primary);
+  display: inline-block;
+  font-size: 30px;
+}
+#back_button {
+  border: solid 1px var(--primary);
+  height: 50px;
+  width: 120px;
+}
+#back_button:hover #back, #back_button:hover #arrow, #back_button:hover{
+  cursor: crosshair;
+  border-color: var(--secondary-light);
+  color: var(--secondary-light);
+}
+#full_heart_1{
+  position: absolute;
+  right: 10%;
+  color: var(--secondary);
+}
+#full_heart_2{
+  position: absolute;
+  right: 14%;
+  color: var(--secondary);
+}
+#full_heart_3{
+  position: absolute;
+  right: 6%;
+  color: var(--secondary);
+}
+#empty_heart_1{
+  position: absolute;
+  right: 10%;
+  color: var(--secondary);
+}
+#empty_heart_2{
+  position: absolute;
+  right: 14%;
+  color: var(--secondary);
+}
+#empty_heart_3{
+  position: absolute;
+  right: 6%;
+  color: var(--secondary);
+}
+.song_text{
+  color: var(--secondary-light);
+  text-align: center;
+  position: absolute;
+  top: 35%; 
+}
+#song{
+  left: 25%;
+}
+#artist{
+  left: 60%;
+}
+#extra{
+  left: 75%;
+}
+
+.form {
+  position: relative;
+  width: 320px;
+  height: 48px;
+}
+.form__input {
+  position: absolute;
+  top: 45%;
+  left: 22%;
+  width: 400px;
+  height: 60px;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  font-family: inherit;
+  font-size: 25px;
+  color: var(--primary);
+  outline: none;
+  padding: 1.25rem;
+  background: none;
+  /* Change border when input focus*/
+}
+.form__input:hover{
+  border-color: var(--secondary-light);
+}
+.form__input:focus {
+  border-color: var(--secondary);
+}
+.form__label {
+  position: absolute;
+  left: 30%;
+  top: 75%;
+  padding: 0;
+  font-size: 25px;
+  color: var(--primary);
+  cursor: cross;
+  transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
+  background-color: var(--background-colour);
+}
+/* 1. When the input is in the focus state reduce the size of the label and move upwards 2. Keep label state when content is in input field */
+.form__input:focus ~ .form__label,
+.form__input:not(:placeholder-shown).form__input:not(:focus) ~ .form__label {
+  top: 23%;
+  font-size: 18px;
+  left: 25%;
+  height: 30px;
+  width: 40px;
+  color: var(--primary);
+  background-color: var(--background-colour);
+  border-color: var(--primary-light);
+  padding: 0px 15px;
+}
+
+#input_1 {
+  position: absolute;
+  top: 45%;
+  left: 15%;
+}
+
+#input_2 {
+  position: absolute;
+  top: 45%;
+  left: 55%;
+}
+
+#buttons{
+  position: absolute;
+  top: 95%;
+}
+
+#submit{
+  position: absolute;;
+  display: inline-block;
+  padding: 15px 30px;
+  color: var(--secondary);
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  text-decoration: none;
+  font-size: 24px;
+  overflow: hidden;
+  transition: 0.2s;
+  top: 65%;
+  left: 46%;
+}
+
+#submit:hover{
+  color: var(--primary);
+  box-shadow: 0 0 50px var(--primary-dark);
+  transition-delay: 1s;
+  cursor: crosshair;
+}
+
+#submit span{
+  position: absolute;
+  display: block;
+}
+
+#submit span:nth-child(1){
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--secondary));
+}
+#submit:hover span:nth-child(1){
+  left: 100%;
+  transition: 1s;
+}
+#submit span:nth-child(2){
+  top: -100%;
+  right: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, var(--secondary));
+}
+#submit:hover span:nth-child(2){
+  top: 100%;
+  transition: 1s;
+  transition-delay: 0.25s;
+}
+#submit span:nth-child(3){
+  bottom: 0;
+  right: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(270deg, transparent, var(--secondary));
+}
+#submit:hover span:nth-child(3){
+  right: 100%;
+  transition: 1s;
+  transition-delay: 0.5s;
+}
+#submit span:nth-child(4){
+  bottom:-100%;
+  left: 0;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(360deg, transparent, var(--secondary));
+}
+#submit:hover span:nth-child(4){
+  bottom: 100%;
+  transition: 1s;
+  transition-delay: 0.75s;
+}
