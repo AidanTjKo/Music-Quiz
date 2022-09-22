@@ -1,0 +1,213 @@
+<html lang="en">
+
+<head>
+  <link rel = "icon" type = "image/png" href = "Images/music-wave.png">
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KXYZRFJK4C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-KXYZRFJK4C');
+  </script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Music Quiz Game</title>
+  <link rel='stylesheet' href='game_style.css'>
+  <!-- <script defer src='game_script.js'></script> -->
+  <script src="https://kit.fontawesome.com/63e6bfb589.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+  <div id='gameover-background'>
+    <h1 id="gameover-h1">Game Over</h1>
+    <img src="../gifs/dyingmonkey.gif" alt="this slowpoke moves"  width="250" id="gif">
+    <h2 id="gameover-score">You scored : </h2>
+    <h3 id="gameover-beat">The score to beat is : </h3>
+  </div>
+  <div id='top_row'>
+    <div id='back_button' onclick="home();">
+      <i id='arrow' class="fa-solid fa-arrow-left-long"></i>
+      <h2 id='back'>Back</h2>
+    </div>
+    <p id = 'score'>Score: </p>
+    <i class="fa-solid fa-heart fa-3x"  id ='full_heart_1'></i>
+    <i class="fa-solid fa-heart fa-3x"  id ='full_heart_2'></i>
+    <i class="fa-solid fa-heart fa-3x"  id ='full_heart_3'></i>
+    <i class="fa-regular fa-heart fa-3x"  id ='empty_heart_1'></i>
+    <i class="fa-regular fa-heart fa-3x"  id ='empty_heart_2'></i>
+    <i class="fa-regular fa-heart fa-3x"  id ='empty_heart_3'></i>
+    <h2 id='genre_title'>HipHop/Rap</h2>
+    <div id = 'song_text'>
+      <h1 id='song' class = 'song_text'>Song</h1>
+      <h1 id='artist' class = 'song_text'>Artist</h1>
+      <h1 id='extra' class = 'song_text'>Extra</h1>
+    </div>
+    <div class="form" id="input_1">
+      <input type="text" id="input_text" class="form__input" autocomplete="off" placeholder=" ">
+      <label for="email" class="form__label">Song</label>
+    </div>
+    <div id = 'submit' onclick = 'submit()'>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      Submit
+    </div>
+    <div id="buttons">
+      <button class="button button1" onclick="setTheme('neon');">neon</button>
+      <button class="button button2" onclick="setTheme('cosmic_sand');">cosmic_sand</button>
+    </div>
+  </div>
+  <script>
+    const songText = document.getElementById('song');
+    const artistText = document.getElementById('artist');
+    const extraText = document.getElementById('extra');
+    const scoreText = document.getElementById('score');
+    const full_heart_1 = document.getElementById('full_heart_1');
+    const full_heart_2 = document.getElementById('full_heart_2');
+    const full_heart_3 = document.getElementById('full_heart_3');
+    const empty_heart_1 = document.getElementById('empty_heart_1');
+    const empty_heart_2 = document.getElementById('empty_heart_2');
+    const empty_heart_3 = document.getElementById('empty_heart_3');
+    var current_genre = window.localStorage.getItem('genre');
+    var genre_listLength;
+    var current;
+    var current_song;
+    var current_artist;
+    var current_extra;
+    var score = 0;
+    var lives = 3;
+    var incorrect = 0;
+    function home(){
+        location.href = "../Main/main.html";
+    }
+
+    function setTheme(theme){
+        window.localStorage.clear('theme');
+        window.localStorage.setItem('theme',theme);
+        document.documentElement.className = window.localStorage.getItem('theme');
+        console.log(window.localStorage.getItem('theme'));
+    }
+
+    document.documentElement.className = window.localStorage.getItem('theme');
+    genre_title.innerHTML = window.localStorage.getItem('genre');
+
+    let song_list = JSON.parse(window.localStorage.getItem('songs'));
+
+    function check_lives(){
+      if(lives == 3){
+        full_heart_1.style.display = 'block';
+        full_heart_2.style.display = 'block';
+        full_heart_3.style.display = 'block';
+        empty_heart_1.style.display = 'none';
+        empty_heart_2.style.display = 'none';
+        empty_heart_3.style.display = 'none';
+      }
+      else if (lives == 2){
+        full_heart_1.style.display = 'none';
+        full_heart_2.style.display = 'block';
+        full_heart_3.style.display = 'block';
+        empty_heart_1.style.display = 'block';
+        empty_heart_2.style.display = 'none';
+        empty_heart_3.style.display = 'none';
+      }
+      else if (lives == 1){
+        full_heart_1.style.display = 'none';
+        full_heart_2.style.display = 'none';
+        full_heart_3.style.display = 'block';
+        empty_heart_1.style.display = 'block';
+        empty_heart_2.style.display = 'block';
+        empty_heart_3.style.display = 'none';
+      } 
+      else if (lives == 0){
+        full_heart_1.style.display = 'none';
+        full_heart_2.style.display = 'none';
+        full_heart_3.style.display = 'none';
+        empty_heart_1.style.display = 'block';
+        empty_heart_2.style.display = 'block';
+        empty_heart_3.style.display = 'block';
+      }
+    }
+
+
+    function asterisk(text){
+      return text.substring(0, 1) + '*'.repeat(text.length-1);
+    }
+
+    function game(song,artist,extra,genre){
+      songText.innerHTML = song.split(" ").map(asterisk).join(" ");
+      artistText.innerHTML = artist;
+      extraText.innerHTML = extra;
+      scoreText.innerHTML = `Score: ${score}`;
+    }
+
+    function main(){
+      check_lives();
+      current_genre = window.localStorage.getItem('genre');
+      genre_listLength = song_list.all[current_genre].length;
+      current = song_list.all[current_genre][Math.floor(Math.random()*genre_listLength)];
+      current_song = current[0];
+      current_artist = current[1];
+      current_extra = current[2];
+      console.log(song_list);
+      console.log(current_song, current_artist, current_extra, genre_listLength);
+      game(current_song,current_artist,current_extra,current_genre);
+    }
+    function submit(){
+      var input_text = document.getElementById('input_text').value;
+      console.log(input_text);
+      if (input_text.toLowerCase() === current_song.toLowerCase()){
+        document.getElementById('input_text').value = '';
+        if(incorrect > 0){
+          score += 1;
+          main();
+          incorrect = 0;
+        }
+        else if (incorrect === 0){
+          score += 3;
+          main();
+          incorrect = 0;
+        }
+      }
+      else if(input_text.toLowerCase() !== current_song.toLowerCase()){
+        document.getElementById('input_text').value = '';
+        lives -= 1;
+        if(lives <= 0){
+          check_lives();
+          gameover();
+        }
+        else{
+          incorrect += 1;
+          check_lives();
+        }
+      }
+    }
+
+    function gameover(){
+      var username = window.localStorage.getItem('currentUser');
+      var login_details = JSON.parse(window.localStorage.getItem('login_details'));
+      if(score > (login_details.users[username][1])){
+        document.getElementById('gameover-background').style.display = 'block';
+        document.getElementById('gameover-score').innerHTML = `Your new highscore is : ${score}`;
+        login_details.users[username][1] = score;
+        document.getElementById('gameover-beat').innerHTML = `The score to beat is : ${login_details.users[username][1]}`;
+        window.localStorage.setItem('login_details',JSON.stringify(login_details));
+
+      }
+      else{
+        document.getElementById('gameover-background').style.display = 'block';
+        document.getElementById('gameover-score').innerHTML = `Your score is : ${score}`;
+        document.getElementById('gameover-beat').innerHTML = `The score to beat is : ${login_details.users[username][1]}`;
+      }
+    }
+    main();
+    
+
+
+  </script>
+</body>
+
+</html>

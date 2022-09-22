@@ -1,6 +1,7 @@
 :root,
 :root.neon{
   --background-colour: #060b23;
+  --background-colour-darker: #030511;
   --primary: #ffffff;
   --primary-dark: #a159ff;
   --secondary-dark:#0e1952;
@@ -9,6 +10,7 @@
 }
 :root.cosmic_sand {
   --background-colour: #051622;
+  --background-colour-darker:#010406;
   --primary-dark:#cb9255;
   --primary: #DEB992;
   --primary-light: #f8f0e7;
@@ -28,13 +30,64 @@
 :root.salmon{
   --background-colour: #034C52;
 }
+
+@font-face{
+  font-family: jetbrains;
+  src: url('../fonts/jetbrains/JetBrainsMono-Light.ttf')
+}
+/* Game over stuff */
+
+#gameover-background{
+  position: fixed;
+  display:none;
+  z-index:2;
+  background-color: var(--background-colour-darker);
+
+
+  top:0;
+  left: 14%;
+  right:0;
+  bottom:0;
+  height: 800px;
+  width: 1400px;
+}
+
+#gameover-h1{
+  position: absolute;
+  top: 10%;
+  left:43%;
+  color: white;
+  font-size: 40px;
+}
+
+#gif{
+  position: absolute;
+  top: 30%;
+  left: 42%;
+}
+
+#gameover-score{
+  position: absolute;
+  top: 70%;
+  left:40%;
+  color: white;
+  font-size: 30px;
+}
+
+#gameover-beat{
+  position: absolute;
+  top: 80%;
+  left:35%;
+  color: white;
+  font-size: 30px;
+}
 * {
-  user-select: none;
+  user-select: none;  
 }
 
 body {
   background-color: var(--background-colour);
-  font-family: Arial;
+  font-family: jetbrains;
 }
 #genre_title {
   text-align: center;
@@ -49,7 +102,7 @@ body {
   color: var(--primary);
   padding-top: 5px;
   font-size: 25px;
-  top: -0.5%;
+  top: -0.8%;
   left: 3%;
 }
 #arrow {
@@ -116,10 +169,10 @@ body {
   top: 35%; 
 }
 #song{
-  left: 20%;
+  left: 30%;
 }
 #artist{
-  left: 60%;
+  left: 55%;
 }
 #extra{
   left: 75%;
@@ -144,6 +197,7 @@ body {
   outline: none;
   padding: 1.25rem;
   background: none;
+  animation-duration:1s;
   /* Change border when input focus*/
 }
 .form__input:hover{
@@ -162,6 +216,7 @@ body {
   cursor: cross;
   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
   background-color: var(--background-colour);
+  animation-duration: 1s;
 }
 /* 1. When the input is in the focus state reduce the size of the label and move upwards 2. Keep label state when content is in input field */
 .form__input:focus ~ .form__label,
@@ -179,14 +234,8 @@ body {
 
 #input_1 {
   position: absolute;
-  top: 45%;
-  left: 15%;
-}
-
-#input_2 {
-  position: absolute;
-  top: 45%;
-  left: 55%;
+  top: 50%;
+  left: 36.5%;
 }
 
 #buttons{
@@ -214,6 +263,7 @@ body {
   box-shadow: 0 0 50px var(--primary-dark);
   transition-delay: 1s;
   cursor: crosshair;
+  border: solid 2px var(--primary-dark);
 }
 
 #submit span{

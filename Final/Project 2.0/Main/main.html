@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <script src="https://kit.fontawesome.com/63e6bfb589.js" crossorigin="anonymous"></script>
+   <link rel = "icon" type = "image/png" href = "Images/music-wave.png">
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KXYZRFJK4C"></script>
+   <script>
+   window.dataLayer = window.dataLayer || [];
+   function gtag(){dataLayer.push(arguments);}
+   gtag('js', new Date());
+
+   gtag('config', 'G-KXYZRFJK4C');
+   </script>
+
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel= 'stylesheet' href = 'main.css'>
+   <title>Music Quiz Home</title>
+   <!-- <script src = 'script.js'></script> -->
+</head>
+   <body>
+      <div id = 'main_container'>
+         <h1 id = 'title'>Music Quiz Game</h1>
+         <div id="sign-out-div" onclick="sign_out()">
+            <p id = 'sign-out-p'>Sign Out</p>
+            <i class="fa-solid fa-right-to-bracket fa-2x" id = 'sign-out-icon'></i>
+         </div>
+         <div class = 'box' id = 'hip_hop_box' onclick = "transfer('Hip_hop')">
+            <h2>HipHop / Rap</h2>
+         </div>
+         <div class = 'box' id = 'pop_box' onclick = "transfer('Pop')">
+            <h2>Pop</h2>
+         </div>
+         <div class = 'box' id = 'jazz_box' onclick = "transfer('Jazz')">
+            <h2>Jazz / Soul</h2>
+         </div>
+         <div class = 'box' id = 'classical_box' onclick = "transfer('Classical')">
+            <h2>Classical</h2>
+         </div>
+         <div id = 'random_box' onclick = "transfer('Random')">
+            <h2>Random</h2>
+         </div>
+         <div id = 'buttons'>
+            <button class="button button1" onclick="setTheme('neon');">neon</button>
+            <button class="button button2" onclick="setTheme('cosmic_sand');">cosmic_sand</button>
+            <!-- <button class="button 3" onclick = "setTheme('retro');">retro</button> -->
+         </div>
+         <p id='created'>Created By Aidan Ko</p>
+      </div>
+      <script>
+         const title = document.getElementById('title');
+         const xhr = new XMLHttpRequest();
+
+         if (window.localStorage.getItem('currentUser')=== null || window.localStorage.getItem('currentUser') === ''){
+            window.alert('You are not signed in');
+            location.href ='../index.html';
+         }
+
+         xhr.onreadystatechange = function(){   
+            if (xhr.readyState == 4){
+               if (xhr.status == 200){
+                     window.localStorage.setItem('songs',xhr.responseText);
+                     console.log(window.localStorage.getItem('songs'));
+               }
+               
+               if(xhr.status == 404){
+                        console.log('File or resource not found'); 
+               }
+            }
+         };
+
+         function getRandomProperty(obj) { //function to get a random genre
+            const keys = Object.keys(obj);
+            return keys[Math.floor(Math.random() * keys.length)];
+         }
+
+         function transfer(genre){
+            if (genre != 'Random'){
+               window.localStorage.setItem('genre',genre);
+               location.href = "../game_page/game_home.html";
+            }
+            else{
+               var random_genre = getRandomProperty(song_list.all); //calls the function to get a random genre
+               window.localStorage.setItem('genre', random_genre);
+               location.href = "../game_page/game_home.html";
+            }
+         }
+
+         function setTheme(theme){
+            window.localStorage.clear('theme');
+            window.localStorage.setItem('theme', theme);
+            console.log(window.localStorage.getItem('theme'));
+            document.documentElement.className = window.localStorage.getItem('theme');
+         }
+
+         function sign_out(){
+            window.localStorage.setItem('currentUser','');
+            window.alert('You have Signed Out || Bye Bye!');
+            location.href = '../index.html';
+         }
+         document.documentElement.className = window.localStorage.getItem('theme');
+         xhr.open('get', '../json/songs.json', true);
+         xhr.send();
+         let song_list = JSON.parse(window.localStorage.getItem('songs'));
+
+      </script>
+   </body>
+</html>

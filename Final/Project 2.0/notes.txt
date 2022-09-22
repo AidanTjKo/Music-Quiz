@@ -1,0 +1,28 @@
+verbose - loud unreadable
+
+When the sign up button is pressed
+
+make a current user 
+
+if field or fields are empty:
+	put error
+else get the field data and put it into a new object with the name of the username
+
+
+
+Checking current user
+
+If current user != '' then replace the title with Hi `name` your top score is `score`
+
+else prompt user to login and redirect user
+
+
+
+make stats button where when you hover over it it gives gives details
+
+make logout button where is clears current user and redirects
+
+add leaderboard
+
+make game over page
+

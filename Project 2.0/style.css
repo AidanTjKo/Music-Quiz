@@ -1,0 +1,120 @@
+:root,
+:root.neon{
+  --background-colour: #060b23;
+  --primary: #ffffff;
+  --primary-dark: #a159ff;
+  --secondary-dark:#0e1952;
+  --secondary:#18ffff;
+  --secondary-light:#adffff;
+}
+:root.cosmic_sand {
+  --background-colour: #051622;
+  --primary-dark:#cb9255;
+  --primary: #DEB992;
+  --primary-light: #f8f0e7;
+  --secondary-dark:#0e5651;
+  --secondary: #1BA098;
+  --secondary-light: #6cbcb7;
+}
+:root.retro{
+  --background-colour: #051C2C;
+  --primary-dark:#7A93DC;
+  --primary: #ED9B33;
+  --primary-light: #7A93DC;
+  --secondary-dark:#3F2A56;
+  --secondary: #5461C8;
+  --secondary-light: #A350A3;
+}
+:root.salmon{
+  --background-colour: #034C52;
+}
+
+@font-face{
+  font-family: jetbrains;
+  src: url('../fonts/jetbrains/JetBrainsMono-Light.ttf')
+}
+
+*{
+  user-select: none;
+}
+body{
+  background-color: var(--background-colour);
+  font-family: jetbrains;
+}
+.box{
+  transition: width 1s, height 1s;
+  position: relative;
+  display: inline-block;
+  width: 230px;
+  height: 230px;
+  margin: 50px;
+  border: solid 5px var(--primary-dark);
+  left: 13%;
+  top: 130px;
+  align-items: center;
+  background-color: var(--background-colur);
+  box-shadow: 0 0 50px var(--primary-dark);
+  transition: 0.5s;
+}
+.box h2{
+  position: relative;
+  text-align: center;
+  top: 32%;
+  color: var(--secondary);
+  font-size: 27px;
+}
+.box:hover{
+  transition: width 1s, height 1s;
+  height: 250px;
+  width: 250px;
+  border-color: var(--secondary);
+  cursor: crosshair;
+  box-shadow:0 0 50px var(--secondary);
+  transition: 0.5s;
+}
+#title{
+  position: relative;
+  color: var(--primary);
+  text-align: center;
+  font-size: 48px;
+  border: solid 3px var(--primary);
+  top: 30px;
+
+  height: 70px;
+  width: 650px;
+  left: 31.5%;
+  padding: 8px;
+}
+#random_box{
+  transition: width 1s, height 1s;
+  position: relative;
+  top: 270px;
+  border: solid 2px var(--primary);
+  width: 280px;
+  height: 60px;
+  left: 42%;
+}
+#random_box h2{
+  position: absolute;
+  color: var(--primary);
+  text-align: center;
+  top: -20%;
+  left: 32%;
+  font-size: 27px;
+}
+#random_box:hover{
+  cursor: crosshair;
+  border-color: var(--secondary);
+  
+}
+#created{
+  color: var(--primary);
+  position: absolute;
+  bottom: 1%;
+  right: 3%;
+  font-size: 20px;
+}
+#buttons{
+  position: absolute;
+  top: 95%;
+}

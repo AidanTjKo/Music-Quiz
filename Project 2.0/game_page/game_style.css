@@ -28,13 +28,19 @@
 :root.salmon{
   --background-colour: #034C52;
 }
+
+@font-face{
+  font-family: jetbrains;
+  src: url('../fonts/jetbrains/JetBrainsMono-Light.ttf')
+}
+
 * {
-  user-select: none;
+  user-select: none;  
 }
 
 body {
   background-color: var(--background-colour);
-  font-family: Arial;
+  font-family: jetbrains;
 }
 #genre_title {
   text-align: center;
@@ -116,7 +122,7 @@ body {
   top: 35%; 
 }
 #song{
-  left: 20%;
+  left: 30%;
 }
 #artist{
   left: 60%;
@@ -144,6 +150,7 @@ body {
   outline: none;
   padding: 1.25rem;
   background: none;
+  animation-duration:1s;
   /* Change border when input focus*/
 }
 .form__input:hover{
@@ -162,6 +169,7 @@ body {
   cursor: cross;
   transition: top 200ms ease-in, left 200ms ease-in, font-size 200ms ease-in;
   background-color: var(--background-colour);
+  animation-duration: 1s;
 }
 /* 1. When the input is in the focus state reduce the size of the label and move upwards 2. Keep label state when content is in input field */
 .form__input:focus ~ .form__label,
@@ -179,14 +187,8 @@ body {
 
 #input_1 {
   position: absolute;
-  top: 45%;
-  left: 15%;
-}
-
-#input_2 {
-  position: absolute;
-  top: 45%;
-  left: 55%;
+  top: 50%;
+  left: 36.5%;
 }
 
 #buttons{
@@ -214,6 +216,7 @@ body {
   box-shadow: 0 0 50px var(--primary-dark);
   transition-delay: 1s;
   cursor: crosshair;
+  border: solid 2px var(--primary-dark);
 }
 
 #submit span{

@@ -1,0 +1,16 @@
+Main Page
+Ask user to type in a name if it exists you will log in if it doesn't it will create it for you.
+
+
+1. get random song 
+2. display
+3. display lives
+4. when the submit button is pressed check if they  match 
+
+if not then play red animation, get rid of life, incorrect = 1, display lives
+if lives are 0 then play gameover animation and store the score for the username if the score is higher
+
+if correct play green animation, if incorrect > 0: score += 1,if incorrect = 0 score += 3
+get a new song
+display a new song
+update score 

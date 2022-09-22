@@ -1,0 +1,40 @@
+Task 1
+Design and code the main page front end
+(Include the initial design)
+Issues I ran into:
+- Depending on the screen size some of the elements would be skewed because I used px so I converted it to the screens %
+- Lots of adjusting
+
+
+
+Task 2
+Design and code the game page front end 
+-	I wanted to add a visual representation of the lives instead of just a number so I added the hearts.
+-	I wanted a cooler answer bar so I used code from a input bar tutorial I followed before
+-	I wanted a cool submit button as well so I used code from another button tutorial I followed before
+-	I wanted a cool colour scheme so I made a system where you could use variables for colours
+Errors:
+Initially I thought that you were suppose to guess the song and the artist so I made two answer bars.
+
+Task 3
+Find the optimal way to store and access the music data
+Errors:
+At the start, I tried to add a json file in the file manager folder and trying to read
+I used xml reading 
+
+Task 4 
+Finding a way to link the two pages 
+
+Task 5
+Start to create the actual game
+-Underscore were conjoined so you couldn’t count the individual characters
+-Changed the font
+
+Task 6
+Creating transitions for guessing the song right
+
+Task 7
+Creating the game over page when the player loses all of their lives
+
+Task 8 
+Finishing touches
