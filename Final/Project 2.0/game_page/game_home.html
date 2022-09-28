@@ -1,5 +1,4 @@
-<html lang="en">
-
+<html lang="en">  <!--Just some initiation stuff-->
 <head>
   <link rel = "icon" type = "image/png" href = "Images/music-wave.png">
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -8,7 +7,6 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-KXYZRFJK4C');
   </script>
   <meta charset="UTF-8">
@@ -19,21 +17,20 @@
   <!-- <script defer src='game_script.js'></script> -->
   <script src="https://kit.fontawesome.com/63e6bfb589.js" crossorigin="anonymous"></script>
 </head>
-
 <body>
-  <div id='gameover-background'>
+  <div id='gameover-background'>        <!--This container contains all of the elements for the game over screen-->
     <h1 id="gameover-h1">Game Over</h1>
     <img src="../gifs/dyingmonkey.gif" alt="this slowpoke moves"  width="250" id="gif">
     <h2 id="gameover-score">You scored : </h2>
     <h3 id="gameover-beat">The score to beat is : </h3>
   </div>
-  <div id='top_row'>
-    <div id='back_button' onclick="home();">
+  <div id='top_row'>  <!--This is the container that contains the back button and hearts-->
+    <div id='back_button' onclick="home();">  <!--This is the back button-->
       <i id='arrow' class="fa-solid fa-arrow-left-long"></i>
       <h2 id='back'>Back</h2>
     </div>
     <p id = 'score'>Score: </p>
-    <i class="fa-solid fa-heart fa-3x"  id ='full_heart_1'></i>
+    <i class="fa-solid fa-heart fa-3x"  id ='full_heart_1'></i> <!--These are the heart icons-->
     <i class="fa-solid fa-heart fa-3x"  id ='full_heart_2'></i>
     <i class="fa-solid fa-heart fa-3x"  id ='full_heart_3'></i>
     <i class="fa-regular fa-heart fa-3x"  id ='empty_heart_1'></i>
@@ -45,18 +42,18 @@
       <h1 id='artist' class = 'song_text'>Artist</h1>
       <h1 id='extra' class = 'song_text'>Extra</h1>
     </div>
-    <div class="form" id="input_1">
+    <div class="form" id="input_1"> <!--This is the text input for -->
       <input type="text" id="input_text" class="form__input" autocomplete="off" placeholder=" ">
       <label for="email" class="form__label">Song</label>
     </div>
-    <div id = 'submit' onclick = 'submit()'>
+    <div id = 'submit' onclick = 'submit()'> <!--This is the submit button-->
       <span></span>
       <span></span>
       <span></span>
       <span></span>
       Submit
     </div>
-    <div id="buttons">
+    <div id="buttons">  <!--This is the container containing the changing theme buttons-->
       <button class="button button1" onclick="setTheme('neon');">neon</button>
       <button class="button button2" onclick="setTheme('cosmic_sand');">cosmic_sand</button>
     </div>
@@ -133,29 +130,30 @@
     }
 
 
-    function asterisk(text){
+    function asterisk(text){ //defining the asterisk function which all the letters in the song asterisk's apart from the first
       return text.substring(0, 1) + '*'.repeat(text.length-1);
     }
 
-    function game(song,artist,extra,genre){
-      songText.innerHTML = song.split(" ").map(asterisk).join(" ");
+    function main(){  //defining the main function (this function is suppose to get all the information ready to be used for the game)
+      check_lives();  //calls the function to check the lives and display them
+      current_genre = window.localStorage.getItem('genre'); //gets the current genre that the user has chose
+      genre_listLength = song_list.all[current_genre].length; //I am finding the list length of the songs in the genre
+      current = song_list.all[current_genre][Math.floor(Math.random()*genre_listLength)]; //I get a random song from the genre
+      current_song = current[0];  //defining the song
+      current_artist = current[1]; //defining the artist
+      current_extra = current[2]; //difining the extra text at the end
+      console.log(current_song, current_artist, current_extra, genre_listLength); //printing the song, artist and extra for testing
+      game(current_song,current_artist,current_extra,current_genre);  //with this information we send this to the display function
+    }
+
+    function game(song,artist,extra,genre){   //defining the game function which displays the song, artist and extra text
+      songText.innerHTML = song.split(" ").map(asterisk).join(" "); //this 
       artistText.innerHTML = artist;
       extraText.innerHTML = extra;
       scoreText.innerHTML = `Score: ${score}`;
     }
 
-    function main(){
-      check_lives();
-      current_genre = window.localStorage.getItem('genre');
-      genre_listLength = song_list.all[current_genre].length;
-      current = song_list.all[current_genre][Math.floor(Math.random()*genre_listLength)];
-      current_song = current[0];
-      current_artist = current[1];
-      current_extra = current[2];
-      console.log(song_list);
-      console.log(current_song, current_artist, current_extra, genre_listLength);
-      game(current_song,current_artist,current_extra,current_genre);
-    }
+
     function submit(){
       var input_text = document.getElementById('input_text').value;
       console.log(input_text);

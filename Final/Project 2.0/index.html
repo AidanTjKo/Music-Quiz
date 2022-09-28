@@ -26,78 +26,77 @@
   
   </main>
   <script>
-    console.log(window.localStorage.getItem('login_details'));
-    const loginForm = document.getElementById("login-form");
+    const loginForm = document.getElementById("login-form"); //defining some variables and elements for later
     const loginButton = document.getElementById("login-form-submit");
     const signUpButton = document.getElementById("signup-form-submit");
     const loginErrorMsg = document.getElementById("login-error-msg");
     const xhr = new XMLHttpRequest();
 
-    xhr.onreadystatechange = function(){   
+    xhr.onreadystatechange = function(){   //defining function that will read from a file and write the login details to localStorage
         if (xhr.readyState == 4){
             if (xhr.status == 200){
               window.localStorage.setItem('login_details', xhr.responseText);
               console.log(window.localStorage.getItem('login_details'));
             }
             
-            if(xhr.status == 404){
+            if(xhr.status == 404){    //if the file is not found it will produce an error
               console.log('File or resource not found'); 
             }
         }
     };
 
-    signUpButton.addEventListener("click", (e) =>{
-      e.preventDefault();
-      const username = loginForm.username.value;
-      const password = loginForm.password.value;
-      if(username === '' || password ===''){
+    signUpButton.addEventListener("click", (e) =>{ //when the sign up button is pressed it will...
+      e.preventDefault();   //prevent the default function for the button from happening
+      const username = loginForm.username.value;    //gets the username from the input bar
+      const password = loginForm.password.value;    //gets the password from the input bar
+      if(username === '' || password ===''){ //if the username or password is left empty it will turn the error message opaque
         loginErrorMsg.style.opacity = 1;
       }
       else{
-        var login_details = JSON.parse(window.localStorage.getItem('login_details'));
-        console.log(login_details);
-        login_details.users[username] = [password,0];
-        console.log(login_details);
-        window.localStorage.setItem('currentUser',username);
-        window.localStorage.setItem('login_details',JSON.stringify(login_details));
-        console.log(window.localStorage.getItem('login_details'));
-        alert(`You have successfully logged in as ${username}`);
-        location.href = "Main/main.html";
+        var login_details = JSON.parse(window.localStorage.getItem('login_details')); //this will get the current login details
+        login_details.users[username] = [password,0];   //this will add the new username and password
+        window.localStorage.setItem('currentUser',username);    //this will set the current user
+        window.localStorage.setItem('login_details',JSON.stringify(login_details)); //this will put the new data back into localStorage
+        alert(`You have successfully logged in as ${username}`);    //this alerts the user that they are logged in
+        location.href = "Main/main.html";   //this relocates them to the main page
       }
     });
 
 
 
 
-    loginButton.addEventListener("click", (e) => {
-      var login_details = JSON.parse(window.localStorage.getItem('login_details'));
-      e.preventDefault();
-      const username = loginForm.username.value;
-      const password = loginForm.password.value;
-
-      if (password === '' || username === ''){
-        loginErrorMsg.style.opacity = 1;
-      }
-      else if (login_details.users[username][0] === password) {
-        alert(`Welcome back ${username}!`);
-        window.localStorage.setItem('currentUser',username);
-        location.href = 'Main/main.html';
-      }
-      else {
+    loginButton.addEventListener("click", (e) => {    //function for when the login page is clicked
+      var login_details = JSON.parse(window.localStorage.getItem('login_details'));   //gets the current login info
+      e.preventDefault();   //prevents the default function of the button from happening
+      const username = loginForm.username.value;    //gets the username from the input bar
+      const password = loginForm.password.value;    //gets the password from the input bar
+      try{    //the program will try this bunch of code
+        if (password === '' || username === ''){    //if the username or password is left empty it will turn the error message opaque
+          loginErrorMsg.style.opacity = 1;
+        }
+        else if (login_details.users[username][0] === password) {   //if the login details match
+          alert(`Welcome back ${username}!`);   //it will display a little message
+          window.localStorage.setItem('currentUser',username);    //it will set the current user
+          location.href = 'Main/main.html';   //it will relocate the user to another page
+        }
+        else {
+          loginErrorMsg.style.opacity = 1;
+        }
+      }catch(error){    //if the first bit of code doesn't work, it will make the error message opaque
         loginErrorMsg.style.opacity = 1;
       }
     });
 
-    if(window.localStorage.getItem('currentUser') === null || window.localStorage.getItem('currentUser') === ''){
-      window.localStorage.setItem('currentUser','');
+    if(window.localStorage.getItem('currentUser') === null || window.localStorage.getItem('currentUser') === ''){   //checking if there is a current user or not
+      window.localStorage.setItem('currentUser','');  //if there isn't any current user then it will set it to ''
     }
     else{
-      window.alert('Your are already logged in || redirecting');
-      location.href = 'Main/index.html';
+      window.alert('Your are already logged in || redirecting');    //if there is already logged in then it will redirect you back the game page
+      location.href = 'Main/main.html';
     }
 
-    if(window.localStorage.getItem('login_details') === null || window.localStorage.getItem('login_details') === '' ){
-      xhr.open('get','json/users.json',true);
+    if(window.localStorage.getItem('login_details') === null || window.localStorage.getItem('login_details') === '' ){  
+      xhr.open('get','json/users.json',true);   //this initiates the user data base if it hasn't already
       xhr.send();
     }
 
