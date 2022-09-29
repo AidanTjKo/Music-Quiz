@@ -1,6 +1,6 @@
 <html lang="en">  <!--Just some initiation stuff-->
 <head>
-  <link rel = "icon" type = "image/png" href = "Images/music-wave.png">
+  <link rel = "icon" type = "image/png" href = "../Images/music-wave.png">
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-KXYZRFJK4C"></script>
   <script>
@@ -83,9 +83,8 @@
     }
 
     function setTheme(theme){
-        window.localStorage.clear('theme');
         window.localStorage.setItem('theme',theme);
-        document.documentElement.className = window.localStorage.getItem('theme');
+        document.documentElement.className = theme;
         console.log(window.localStorage.getItem('theme'));
     }
 
@@ -191,7 +190,7 @@
         document.getElementById('gameover-background').style.display = 'block';
         document.getElementById('gameover-score').innerHTML = `Your new highscore is : ${score}`;
         login_details.users[username][1] = score;
-        document.getElementById('gameover-beat').innerHTML = `The score to beat is : ${login_details.users[username][1]}`;
+        document.getElementById('gameover-beat').innerHTML = ``;
         window.localStorage.setItem('login_details',JSON.stringify(login_details));
 
       }

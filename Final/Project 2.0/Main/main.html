@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
    <script src="https://kit.fontawesome.com/63e6bfb589.js" crossorigin="anonymous"></script>
-   <link rel = "icon" type = "image/png" href = "Images/music-wave.png">
+   <link rel = "icon" type = "image/png" href = "../Images/music-wave.png">
    <!-- Global site tag (gtag.js) - Google Analytics -->
    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KXYZRFJK4C"></script>
    <script>
@@ -21,10 +21,26 @@
    <!-- <script src = 'script.js'></script> -->
 </head>
    <body>
+      <div id="leaderboard-background">
+         <i class="fa-solid fa-xmark fa-2x" id="x" onclick="leaderboard_x()"></i>
+         <h1 id="leaderboard-title">Leaderboard</h1>
+            <ol>
+               <li id = 'player_1'>Player</li>
+               <li id = 'player_2'>Player</li>
+               <li id = 'player_3'>Player</li>
+               <li id = 'player_4'>Player</li>
+               <li id = 'player_5'>Player</li>
+               <p id="player">Your score is : 0</p>
+            </ol>
+      </div>
       <div id = 'main_container'>
+         <div id = 'leaderboard-div' onclick="leaderboard()">
+            <i class="fa-solid fa-ranking-star fa-2x" id = 'leaderboard'></i>
+            <p id="leaderboard-p">Leaderboard</p>
+         </div>
          <h1 id = 'title'>Music Quiz Game</h1>
          <div id="sign-out-div" onclick="sign_out()">
-            <p id = 'sign-out-p'>Sign Out</p>
+            <p id = 'sign-out-p'>Sign Out</p>\
             <i class="fa-solid fa-right-to-bracket fa-2x" id = 'sign-out-icon'></i>
          </div>
          <div class = 'box' id = 'hip_hop_box' onclick = "transfer('Hip_hop')">
@@ -89,7 +105,6 @@
          }
 
          function setTheme(theme){
-            window.localStorage.clear('theme');
             window.localStorage.setItem('theme', theme);
             console.log(window.localStorage.getItem('theme'));
             document.documentElement.className = window.localStorage.getItem('theme');
@@ -100,6 +115,38 @@
             window.alert('You have Signed Out || Bye Bye!');
             location.href = '../index.html';
          }
+
+         function leaderboard(){
+            let currentUser = localStorage.getItem('currentUser');   //declaring some variables for manipulating the elements
+            const player_1 = document.getElementById('player_1');
+            const player_2 = document.getElementById('player_2');
+            const player_3 = document.getElementById('player_3');
+            const player_4 = document.getElementById('player_4');
+            const player_5 = document.getElementById('player_5');
+            const player = document.getElementById('player');
+
+            document.getElementById('leaderboard-background').style.display ='block';  //making the leaderboard visible
+            var leaderboard_details = JSON.parse(window.localStorage.getItem('login_details'));    //getting the leaderboard info
+            let sortable = [];   //creating the temprorary list to carry the ordered list of names and scores
+            for (var user in leaderboard_details['users']){ //cycling through the users in the username object
+               sortable.push([user, leaderboard_details['users'][user][1]]);  //putting all of the usernames and scores in the list
+            }
+            sortable.sort(function(a, b) {   //sorting the list by descending order
+               return b[1]-a[1];
+            });
+            player_1.innerHTML = `${sortable[0][0]} || Score : ${sortable[0][1]}`   //replacing the text inside the elements
+            player_2.innerHTML = `${sortable[1][0]} || Score : ${sortable[1][1]}`   
+            player_3.innerHTML = `${sortable[2][0]} || Score : ${sortable[2][1]}`
+            player_4.innerHTML = `${sortable[3][0]} || Score : ${sortable[3][1]}`
+            player_5.innerHTML = `${sortable[4][0]} || Score : ${sortable[4][1]}`
+            player.innerHTML = `${currentUser} your high score is ${leaderboard_details['users'][currentUser][1]}`;
+         }
+
+         function leaderboard_x(){
+            document.getElementById('leaderboard-background').style.display ='none';   //makes the leaderboard not visible
+         }
+
+
          document.documentElement.className = window.localStorage.getItem('theme');
          xhr.open('get', '../json/songs.json', true); //it opens the songs.json file
          xhr.send();    //it sends the data to xhr

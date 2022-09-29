@@ -1,6 +1,7 @@
-:root,
-:root.neon{
+:root, /*Colour schemes again*/
+:root.neon{ 
   --background-colour: #060b23;
+  --background-colour-darker: #030511;
   --primary: #ffffff;
   --primary-dark: #a159ff;
   --secondary-dark:#0e1952;
@@ -9,6 +10,7 @@
 }
 :root.cosmic_sand {
   --background-colour: #051622;
+  --background-colour-darker:#010406;
   --primary-dark:#cb9255;
   --primary: #DEB992;
   --primary-light: #f8f0e7;
@@ -41,6 +43,96 @@ body{
   background-color: var(--background-colour);
   font-family: jetbrains;
 }
+
+#leaderboard{
+  color: var(--secondary);
+  top: 1%;
+  right: 97.5%;
+  position: absolute;
+}
+
+#leaderboard-p{
+  position: absolute;
+  color: var(--primary);
+  top: 0.3%;
+  right: 91.5%;
+}
+
+#leaderboard-p:hover{
+  color: var(--primary-dark);
+}
+
+#leaderboard-div:hover{
+  cursor: pointer;
+}
+
+/*Leaderboad stuff*/
+
+#leaderboard-background{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 13%;
+  height: 900px;
+  width: 1400px;
+  background-color: var(--background-colour-darker);
+  z-index: 1;
+  display: none;
+}
+
+#x{
+  position: absolute;
+  top:1%;
+  left: 97%;;
+  color: var(--primary);
+}
+
+#x:hover{
+  cursor: pointer;
+  color: var(--primary-dark);
+}
+
+#leaderboard-title{
+  position: absolute;
+  color: var(--primary);
+  top: 3%;
+  left: 41%;
+  font-size: 40px;
+}
+
+ol{
+  position: absolute;
+  color: var(--primary);
+  top: 20%;
+  left:30%;
+}
+
+li{
+  padding: 30px;
+  font-size: 30px;
+}
+
+#player{
+  position: absolute;
+  top: 550px;
+  left: 10%;
+  font-size: 30px;
+  width: 500px;
+  color: var(--secondary);
+}
+
+#player_1{
+  color: #D19E3F;
+}
+
+#player_2{
+  color:#C4BAB9;
+}
+
+#player_3{
+  color:#905636;
+}
+
 #sign-out-icon{
   color: var(--secondary);
   left:97.5%;
@@ -53,6 +145,11 @@ body{
   left: 93%;
   position:absolute;
 }
+
+#sign-out-p:hover{
+  color: var(--primary-dark);
+}
+
 #sign-out-div:hover{
   cursor: pointer;
 }
