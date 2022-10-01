@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1", initial-scale=1.0">
+    <title>Project Rain</title>
+    <link rel='stylesheet' href='style_black_and_white.css'>
+</head>
+<body>
+    <!--<div id='slider_div'>
+        <input id = 'red_slider' class = 'sliders' type="range" min="0" max="255" value="0" step="1">
+        <br>
+        <input id = 'green_slider' class = 'sliders' type="range" min="0" max="255" value="0" step="1">
+        <br>
+        <input id='blue_slider' class = 'sliders' type="range" min="0" max="255" value="0" step="1">
+    </div>-->
+    <div id="sliders">
+        <input type="range" min='0' max='255' id="red-slider" class = 'slider'>
+        <p id="red_p" class="slider_text">Red: </p>
+        <input type="range" min='0' max='255' id="green-slider" class = 'slider'>
+        <p id="green_p" class="slider_text">Green: </p>
+        <input type="range" min='0' max='255' id="blue-slider" class = 'slider'>
+        <p id="blue_p" class="slider_text">Blue: </p>
+        <input type="range" min='0' max='10' id="speed-slider" class = 'slider'>
+        <p id="speed_p" class="slider_text">Speed: </p>
+    </div>
+    <canvas id='canvas1'></canvas>
+    <input type="file" onchange="encodeImageFileAsURL(this)" id='file_input'/>
+    <script src="colours.js"></script>
+    <script src="code.js"></script>
+</body>
+</html>
+
+<!-- Final goals:
+   Create a slider for rgb value and add presets as well
+   Options for size and speed as well
+   Add your own custom image and convert to base 64
+   Create add different modes and effects
+-->
+
+   

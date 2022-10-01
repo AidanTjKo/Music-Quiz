@@ -1,0 +1,110 @@
+/*Importing fonts*/
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+@font-face{
+    font-family: jetbrains;
+    src: url('font/JetBrainsMono-Light.ttf')
+}
+
+*{
+    font-family: jetbrains;
+}
+
+body{
+    background-color: black;
+}
+
+#canvas1{
+    border: 2px solid;
+    border-color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 750px;
+    height: 1000px;
+}
+
+#red-slider{
+    color: red;
+}
+
+.slider {
+    position: inline-block;
+    -webkit-appearance: none;
+    width: 200px;
+    height: 15px;
+    background: #000;
+    outline: none;
+    border: 5px solid lawngreen;
+    border-radius: 8px;
+    margin: 50px;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 30px;
+    background: #000;
+    cursor: pointer;
+    border: 5px solid lawngreen;
+    border-radius: 4px;
+}
+
+#sliders{
+    position: absolute;
+    max-width: 266px;
+    top: 10%;
+
+}
+
+#red-slider{
+    border-color:red;
+}
+
+#red-slider::-webkit-slider-thumb {
+    border-color: red;
+}
+
+#green-slider{
+    border-color:rgb(0, 255, 0);
+}
+
+#green-slider::-webkit-slider-thumb {
+    border-color: rgb(0, 255, 0);
+}
+
+#blue-slider{
+    border-color: blue;
+}
+
+#blue-slider::-webkit-slider-thumb {
+    border-color: blue;
+}
+
+#speed-slider{
+    border-color: rgb(255, 255, 255);
+}
+
+#speed-slider::-webkit-slider-thumb {
+    border-color: rgb(255, 238, 0);
+}
+
+.slider_text{
+    color: white;
+    font-size: 20px;
+    position: relative;
+    text-align: center;
+}
+
+#file_input{
+    position: absolute;
+    bottom: 50%;
+    left: 83.5%;
+    font-size: 20px;
+}
+
+
+
+
